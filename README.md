@@ -1,109 +1,57 @@
-# Module 8 Server-Side APIs: Weather Dashboard
 
-## Your Task
+# Weather Forcast Application
+## Description <a name="description"></a>
+ Application allows to gather up-to-date weather information for choosen location, including current conditions,  and five days forecast. User-friendly interface allows to easily search for any location and store search history.
+## Table of Content
 
-Server APIs allow developers to access their data and functionality by making requests with specific parameters to a URL. Developers are often tasked with retrieving data from another application's API and using it in the context of their own. Your challenge is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
+1. [Description](#description)
+2. [Installation](#installation)
+3. [Usage](#usage)
+4. [Contribution](#contribution)
+5. [Repository](#repository)
+6. [Deployment](#deployment)
+7. [Licence](#licence)
+8. [Questions](#questions)
 
-Use the [5 Day Weather Forecast](https://openweathermap.org/forecast5) to retrieve weather data for cities. The link should take you to a guide on how to use the 5 Day Forecast API. You will need to register for an API key in order to use this API. After registering for a new API key, you may need to wait up to 2 hours for that API key to activate.
+## Installation <a name="installation"></a>
+Application works on any website browser.  
 
-The base URL for your API calls should look like the following: `https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}`.
+## Usage <a name="usage"></a>
+To use application please provide choosen location to input field, and click `Sarch` button.
 
-**Hint**: Using the 5 Day Weather Forecast API, you'll notice that you will need to pass in coordinates instead of just a city name. Using the OpenWeatherMap APIs, how could we retrieve geographical coordinates given a city name?
+![search](./images/Screen1.png)
 
-You will use `localStorage` to store any persistent data. For more information on how to work with the OpenWeather API, refer to the [Full-Stack Blog on how to use API keys](https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys).
+Application will render 2 rows of 6 tiles in total. 
+Top tile represent today's weather conditions.
+Followed by five elements with data for next five days.
 
-## User Story
+Today's weather contain: temprature, humidity, wind speed with appropriate SI base unit.
 
-```text
-AS A traveler
-I WANT to see the weather outlook for multiple cities
-SO THAT I can plan a trip accordingly
-```
+![weather](./images/Screen2.png)
 
-## Acceptance Criteria
+Application will store and display user search history. Created buttons can be used to more efficient navigation between searched cities.
 
-* Create a weather dashboard with form inputs.
-  * When a user searches for a city they are presented with current and future conditions for that city and that city is added to the search history
-  * When a user views the current weather conditions for that city they are presented with:
-    * The city name
-    * The date
-    * An icon representation of weather conditions
-    * The temperature
-    * The humidity
-    * The wind speed
-  * When a user view future weather conditions for that city they are presented with a 5-day forecast that displays:
-    * The date
-    * An icon representation of weather conditions
-    * The temperature
-    * The humidity
-  * When a user click on a city in the search history they are again presented with current and future conditions for that city
+![history](./images/Screen3.png)
 
-## Mock-Up
 
-The following image shows the web application's appearance and functionality:
 
-![The weather app includes a search option, a list of cities, and a five-day forecast and current weather conditions for London.](./assets/10-server-side-apis-challenge-demo.png)
 
-## Grading Requirements
+## Contribution <a name="contribution"></a>
+Contribution is not available at this moment. Please check for further updates.
 
-> **Note**: If a Challenge assignment submission is marked as “0”, it is considered incomplete and will not count towards your graduation requirements. Examples of incomplete submissions include the following:
->
-> * A repository that has no code
->
-> * A repository that includes a unique name but nothing else
->
-> * A repository that includes only a README file but nothing else
->
-> * A repository that only includes starter code
+## Repository <a name="Repository"></a>
 
-This Challenge is graded based on the following criteria:
+Repository link: [https://github.com/WloMac/Weather-Forecast](https://github.com/WloMac/Weather-Forecast)
 
-### Technical Acceptance Criteria: 40%
+## Deployment <a name="Deployment"></a>
+Deployed website: [https://wlomac.github.io/Weather-Forecast/](https://wlomac.github.io/Weather-Forecast/)
 
-* Satisfies all of the above acceptance criteria plus the following:
+## License <a name="licence"></a>
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-  * Uses the OpenWeather API to retrieve weather data.
 
-  * Uses `localStorage` to store persistent data.
+## Questions <a name="questions"></a> 
+[WloMac](https://github.com/WloMac)
 
-### Deployment: 32%
+If you have any further questions about this README Generetor do not hesitate to contact using this e-mail address: wmac.webdev@gmail.com
 
-* Application deployed at live URL.
-
-* Application loads with no errors.
-
-* Application GitHub URL submitted.
-
-* GitHub repository that contains application code.
-
-### Application Quality: 15%
-
-* Application user experience is intuitive and easy to navigate.
-
-* Application user interface style is clean and polished.
-
-* Application resembles the mock-up functionality provided in the homework instructions.
-
-### Repository Quality: 13%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains quality readme file with description, screenshot, and link to deployed application.
-
-## Review
-
-You are required to submit BOTH of the following for review:
-
-* The URL of the functional, deployed application.
-
-* The URL of the GitHub repository. Give the repository a unique name and include a readme describing the project.
-
----
-
-© 2022 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
