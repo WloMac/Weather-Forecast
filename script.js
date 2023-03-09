@@ -2,36 +2,54 @@ let apiKey = "ddd9f5250efabb4bed328c6729073eb9";
 
 
 
-//event listener button create element
-//How to change variable in global scope
-
 document.getElementById("search-button").onclick = search;
 
+historySarch = JSON.parse(localStorage.getItem("historySearch"))
 
-function search(event) {
-    event.preventDefault();
-    let city = document.getElementById("search-input").value;
-    geoCode(city)
-    createBtn(city)
 
+if (historySarch){
+    for (let index = 0; index < historySarch.length; index++) {
+        const element = historySarch[index];
+
+        createBtn(element)        
+    }
+    localStorage.clear();
 }
 
-// add local storage to keep buttons on screen
-// add data class to button
-// recall data class from local storage
-// add clear button
-// prevent from typing random
+function search(event) {
+    event.preventDefault();    
+    let city = document.getElementById("search-input").value;   
+    geoCode(city)
+    createBtn(city)
+    
+}
+
 
 function createBtn(city) {
     let newBtn = document.createElement("button");
     let listEl = document.querySelector("#history");
-    //create ul /li
+    newBtn.addEventListener("click", function () {
+        console.log("click")
+        geoCode(city);
+    });
+
+    console.log()
     listEl.append(newBtn);
     newBtn.type = "button"
     newBtn.class = "btn-primary"
     newBtn.textContent = city;
-    localStorage.setItem(city, `data-${city}`);
-
+    const cityList = JSON.parse(localStorage.getItem("historySearch"));
+    if (cityList){
+        cityList.push(city);
+        localStorage.setItem("historySearch", JSON.stringify(cityList));
+    }else{   
+        let array = []
+        array.push(city)
+    localStorage.setItem("historySearch", JSON.stringify(array));
+    }
+   
+    
+   
 }
 
 function geoCode(city) {
@@ -48,16 +66,13 @@ function geoCode(city) {
 
 function forecast(data) {
     fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${data.lat}&lon=${data.lon}&appid=${apiKey}&units=metric`).then(response => response.json()).then(function (fiveDaysOutput) {
-        let fiveDayDisplayEl = document.querySelector("#forecast");   
-        ;
-        console.log(fiveDaysOutput)
-        
-        
-        
+        let fiveDayDisplayEl = document.querySelector("#forecast")                    
+        fiveDayDisplayEl.textContent = " ";
         
         for (let i = 1;  i < 40; i++) {  
             var date = moment.unix(fiveDaysOutput.list[i].dt).format("DD/MM/YYYY")
-            console.log(i)         
+            console.log(i)    
+             
             fiveDayDisplayEl.innerHTML += `<div id="${fiveDaysOutput.city.name}">
             <p>City: ${fiveDaysOutput.city.name}</p>
             <p>Date: ${date}</p>
