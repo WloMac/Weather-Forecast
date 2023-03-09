@@ -23,7 +23,7 @@ function search(event) {
     geoCode(city)
     createBtn(city)
     }else{
-        alert("Sorry, you need to type city")
+        alert("Oops! There is no city!")
     }
     
 }
@@ -39,8 +39,8 @@ function createBtn(city) {
 
     console.log()
     listEl.append(newBtn);
-    newBtn.type = "button"
-    newBtn.class = "btn-primary"
+    newBtn.type = "button";
+    newBtn.classList.add("btn-custom");
     newBtn.textContent = city;
     const cityList = JSON.parse(localStorage.getItem("historySearch"));
     if (cityList){
