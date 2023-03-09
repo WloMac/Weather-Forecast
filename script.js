@@ -18,9 +18,13 @@ if (historySarch){
 
 function search(event) {
     event.preventDefault();    
-    let city = document.getElementById("search-input").value;   
+    let city = document.getElementById("search-input").value; 
+    if (city.length > 0){  
     geoCode(city)
     createBtn(city)
+    }else{
+        alert("Sorry, you need to type city")
+    }
     
 }
 
@@ -29,7 +33,7 @@ function createBtn(city) {
     let newBtn = document.createElement("button");
     let listEl = document.querySelector("#history");
     newBtn.addEventListener("click", function () {
-        console.log("click")
+        
         geoCode(city);
     });
 
@@ -73,13 +77,14 @@ function forecast(data) {
             var date = moment.unix(fiveDaysOutput.list[i].dt).format("DD/MM/YYYY")
             console.log(i)    
              
-            fiveDayDisplayEl.innerHTML += `<div id="${fiveDaysOutput.city.name}">
-            <p>City: ${fiveDaysOutput.city.name}</p>
-            <p>Date: ${date}</p>
-            <p><p><img src='https://openweathermap.org/img/wn/${fiveDaysOutput.list[i].weather[0].icon}@2x.png'></p>
-            <p>Temperature: ${fiveDaysOutput.list[i].main.temp} °C</p>
-            <p>Wind Speed: ${fiveDaysOutput.list[i].wind.speed} km/h</p>
-            <p>Humidity: ${fiveDaysOutput.list[i].main.humidity} %</p>
+            fiveDayDisplayEl.innerHTML += `<div class="card" style="width:200px">
+            <img class="card-img-top" src='https://openweathermap.org/img/wn/${fiveDaysOutput.list[i].weather[0].icon}@2x.png' alt="Weather Icon">
+            <div class="card-body">
+            <h4 class="card-title">${fiveDaysOutput.city.name}</h4>
+            <p class="card-text">Date: ${date}</p>           
+            <p class="card-text">Temperature: ${fiveDaysOutput.list[i].main.temp} °C</p>
+            <p class="card-text">Wind Speed: ${fiveDaysOutput.list[i].wind.speed} km/h</p>
+            <p class="card-text">Humidity: ${fiveDaysOutput.list[i].main.humidity} %</p>
             </div>`
                                              
             i+=7
@@ -95,13 +100,15 @@ function current(data){
         let todayDiesplayEl = document.querySelector('#today')
         let todayDate = moment.unix(currentWeather.dt).format("DD/MM/YYYY")
         console.log(currentWeather)
-        todayDiesplayEl.innerHTML = `<div id="today-${currentWeather.name}">
-        <p>City: ${currentWeather.name}</p>
-        <p>Date: ${todayDate}</p>
-        <p><img src='https://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png'></p>
-        <p>Temperature: ${currentWeather.main.temp} °C</p>
-        <p>Humidity: ${currentWeather.main.humidity} %</p>
-        <p>Wind speed: ${currentWeather.wind.speed} km/h</p>         
+        todayDiesplayEl.innerHTML = `<div class="card" style="width:200px">
+        <img class="card-img-top" src='https://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png' alt="Weather Icon">
+        <div class="card-body">
+        <h4 class="card-title"> ${currentWeather.name}</h4>
+        <p class="card-text"> Date: ${todayDate}</p>
+        
+        <p class="card-text">Temperature: ${currentWeather.main.temp} °C</p>
+        <p class="card-text">Humidity: ${currentWeather.main.humidity} %</p>
+        <p class="card-text">Wind speed: ${currentWeather.wind.speed} km/h</p>         
         </div>`
              
     })
